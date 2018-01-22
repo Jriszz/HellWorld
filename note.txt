@@ -1,0 +1,72 @@
+1.JSON()
+2.unittest()
+————————————————————————————————
+excle+pytest+jenkins+allure接口自动化测试框架
+
+
+1.异常类 raise：
+自己引发异常类或其他类型
+2.try.....except....finally
+3.try.....except
+
+
+3.re module
+matchObj = re.match( r'(.*) are (.*?) .*', line, re.M|re.I) #按照匹配规则进行匹配
+matchObj.group(1) #匹配第一个分组
+matchObj.group(0)#默认匹配所有字符
+searchObj = re.search( r'(.*) are (.*?) .*', line, re.M|re.I) #搜索字符串满足条件的字符
+
+4.unittest框架
+1.加selenium进行web自动化测试
+2.单元测试
+3.接口测试
+4.性能测试
+5.unittest下的TextTestrunner，HTMLTestRunner，TestLoader，TestSuite
+
+
+6.
+将运行结果保存在文档中
+import unittest  
+from test_mathfunc import TestMathFunc  
+   
+if __name__ == '__main__':  
+    suite = unittest.TestSuite()  
+   
+    tests = [TestMathFunc("test_add"), TestMathFunc("test_minus"), TestMathFunc("test_divide")]  
+    suite.addTests(tests)  
+   
+    with open('UnittestTextReport.txt', 'a') as  f:  
+        runner = unittest.TextTestRunner(stream=f, verbosity=2)  
+        runner.run(suite)  
+7.cookie和ssession两种机制
+1.cookie机制是一种客户端机制，保存客户端和服务器状态，主要内容包括名字，值，过期时间，路径和域
+
+下面就是一个goolge设置cookie的响应头的例子 
+
+    HTTP/1.1 302 Found 
+    Location: http://www.google.com/intl/zh-CN/ 
+    Set-Cookie: PREF=ID=0565f77e132de138:NW=1:TM=1098082649:LM=1098082649:S=KaeaCFPo49RiA_d8; 
+    expires=Sun, 17-Jan-2038 19:14:07 GMT; path=/; domain=.google.com 
+    Content-Type: text/html 
+2.session机制是一种服务器端的机制，服务器使用一种类似于散列表的结构（也可能就是使用散列表）来保存信息。
+
+通过cookie传入的ssessionid进行检索
+3.保存在硬盘上的cookie在发送ssessionid，重新
+
+
+----------------------------------------------------------
+1.unittest.TestLoader().discover("testsuites")在实际脚本开发过程中，最后都采用这个方法来批量管理和执行几百上千的测试用例。
+
+
+-----------------------------------------------------------
+# 设置报告文件保存路径  
+report_path = os.path.dirname(os.path.abspath('.')) + '/test_report/'  
+# 获取系统当前时间  
+now = time.strftime("%Y-%m-%d-%H_%M_%S", time.localtime(time.time()))  
+  
+# 设置报告名称格式  
+HtmlFile = report_path + now + "HTMLtemplate.html"  
+fp = file(HtmlFile, "wb")  
+
+runner = HTMLTestRunner.HTMLTestRunner(stream=fp,title="某某项目测试报告",description = "用例测试情况")
+
